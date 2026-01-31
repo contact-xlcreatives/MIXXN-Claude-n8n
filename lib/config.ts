@@ -4,14 +4,14 @@ import { z } from 'zod';
 
 const configSchema = z.object({
   n8n: z.object({
-    webhookUrl: z.string().url(),
-    apiKey: z.string().min(1),
+    webhookUrl: z.string(),
+    apiKey: z.string(),
     timeout: z.number().positive().default(30000),
     maxRetries: z.number().nonnegative().default(3),
     retryDelay: z.number().positive().default(1000),
   }),
   app: z.object({
-    url: z.string().url(),
+    url: z.string(),
     name: z.string().default('MIXXN Claude'),
   }),
   features: z.object({
