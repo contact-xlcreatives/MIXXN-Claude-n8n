@@ -1,5 +1,7 @@
 // Echo Workflow API Route
 
+export const runtime = 'edge';
+
 import { NextRequest, NextResponse } from 'next/server';
 import { n8nClient } from '@/lib/n8n/client';
 import { echoRequestSchema } from '@/lib/validation/schemas';

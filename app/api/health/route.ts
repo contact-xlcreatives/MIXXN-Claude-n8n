@@ -1,5 +1,7 @@
 // Health Check API Route
 
+export const runtime = 'edge';
+
 import { NextResponse } from 'next/server';
 import { n8nClient } from '@/lib/n8n/client';
 
