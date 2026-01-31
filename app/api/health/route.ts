@@ -1,10 +1,19 @@
 // Health Check API Route
 
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import { n8nClient } from '@/lib/n8n/client';
+import { validateApiKey } from '@/lib/auth/middleware';
 
-export async function GET() {
+export async function GET(request: NextRequest) {
   try {
+    // Authentication check
+    if (!validateApiKey(request)) {
+      return NextResponse.json(
+        { error: 'Unauthorized - Invalid or missing API key' },
+        { status: 401 }
+      );
+    }
+
     const n8nHealthy = await n8nClient.healthCheck();
 
     return NextResponse.json({
