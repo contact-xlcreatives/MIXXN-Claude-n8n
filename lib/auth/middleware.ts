@@ -33,5 +33,6 @@ export function getClientIp(request: NextRequest): string {
     return realIp;
   }
 
-  return request.ip || '127.0.0.1';
+  // Use type assertion for runtime property
+  return (request as any).ip || '127.0.0.1';
 }
