@@ -56,7 +56,7 @@ export default function Home() {
         </div>
 
         {/* Test Interface */}
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-xl p-8">
+        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-xl p-8" suppressHydrationWarning>
           <h2 className="text-2xl font-semibold mb-6 text-gray-800 dark:text-gray-100">
             Echo Test Workflow
           </h2>
