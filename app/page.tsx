@@ -48,7 +48,7 @@ export default function Home() {
         {/* Header */}
         <div className="text-center mb-12">
           <h1 className="text-5xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-            MIXXN Claude
+            MIXXN Claude v2
           </h1>
           <p className="text-xl text-gray-600 dark:text-gray-400 mb-2">
             n8n Workflow-to-App System
