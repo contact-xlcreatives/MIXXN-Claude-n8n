@@ -1,0 +1,34 @@
+version: '3.8'
+
+# MIXXN Claude - n8n Docker Configuration
+# Start: docker compose up -d
+# Stop:  docker compose down
+# Logs:  docker compose logs -f n8n
+
+volumes:
+  n8n_data:
+
+services:
+  n8n:
+    image: docker.n8n.io/n8nio/n8n
+    container_name: mixxn-n8n
+    restart: unless-stopped
+    ports:
+      - "5678:5678"
+    environment:
+      # CRITICAL: This tells n8n what URL to use for webhooks
+      - WEBHOOK_URL=http://localhost:5678/
+      # Allow HTTP cookies (for local development)
+      - N8N_SECURE_COOKIE=false
+      # Timezone (adjust as needed)
+      - GENERIC_TIMEZONE=Europe/London
+      - TZ=Europe/London
+    volumes:
+      # Named volume - data persists between restarts
+      - n8n_data:/home/node/.n8n
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://localhost:5678/healthz"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
